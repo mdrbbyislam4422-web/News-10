@@ -1,0 +1,6 @@
+{
+  "name": "News 10",
+  "description": "Your Trusted Source for Breaking News - Professional, modern, and responsive online news portal with live breaking news ticker, comprehensive coverage, and dynamic admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
