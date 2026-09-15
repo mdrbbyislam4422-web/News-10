@@ -1,0 +1,565 @@
+import { Article, Category, Author, BreakingNews, AdSlotConfig, SiteSettings } from '../src/types';
+
+export const initialCategories: Category[] = [
+  { id: 'cat-bangladesh', name: 'Bangladesh', slug: 'bangladesh', description: 'National news, policy updates, regional developments across Bangladesh', color: '#16a34a', order: 1 },
+  { id: 'cat-international', name: 'International', slug: 'international', description: 'Global geopolitics, world affairs, and foreign diplomacy', color: '#2563eb', order: 2 },
+  { id: 'cat-politics', name: 'Politics', slug: 'politics', description: 'Government affairs, elections, governance and public policy', color: '#dc2626', order: 3 },
+  { id: 'cat-sports', name: 'Sports', slug: 'sports', description: 'Cricket, football, international tournaments and athlete spotlights', color: '#ea580c', order: 4 },
+  { id: 'cat-technology', name: 'Technology', slug: 'technology', description: 'Artificial intelligence, cybersecurity, tech startups and gadgets', color: '#0891b2', order: 5 },
+  { id: 'cat-business', name: 'Business', slug: 'business', description: 'Stock markets, economic indicators, banking, trade and startups', color: '#4f46e5', order: 6 },
+  { id: 'cat-entertainment', name: 'Entertainment', slug: 'entertainment', description: 'Cinema, music, performing arts, cultural festivals and media', color: '#c026d3', order: 7 },
+  { id: 'cat-lifestyle', name: 'Lifestyle', slug: 'lifestyle', description: 'Health, travel, cuisine, architecture and wellness guides', color: '#059669', order: 8 },
+];
+
+export const initialAuthors: Author[] = [
+  {
+    id: 'author-1',
+    name: 'Rahman Kabir',
+    title: 'Senior Political & National Affairs Correspondent',
+    bio: 'Over 15 years investigating parliamentary legislation, fiscal transparency, and civic reform across South Asia.',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    email: 'r.kabir@news10.com',
+    socialLinks: { twitter: 'https://twitter.com', facebook: 'https://facebook.com', linkedin: 'https://linkedin.com' }
+  },
+  {
+    id: 'author-2',
+    name: 'Tania Mahbub',
+    title: 'Chief Technology & Digital Economy Editor',
+    bio: 'Covering frontier AI developments, emerging tech hubs, telecommunications breakthroughs, and digital sovereignty.',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+    email: 't.mahbub@news10.com',
+    socialLinks: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com' }
+  },
+  {
+    id: 'author-3',
+    name: 'Sadikur Rahman',
+    title: 'Lead Sports Journalist & Analyst',
+    bio: 'Specialist in Bangladesh national cricket team analytics, ICC tournaments, football tactician breakdowns and Olympics.',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    email: 's.rahman@news10.com',
+    socialLinks: { twitter: 'https://twitter.com', facebook: 'https://facebook.com' }
+  },
+  {
+    id: 'author-4',
+    name: 'Elena Rostova',
+    title: 'International Bureau Chief',
+    bio: 'Foreign correspondent reporting on multilateral treaties, climate summits, UN diplomacy, and global supply chains.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    email: 'e.rostova@news10.com',
+    socialLinks: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com' }
+  },
+  {
+    id: 'author-5',
+    name: 'Nayeem Hasan',
+    title: 'Markets & Macroeconomics Editor',
+    bio: 'Focuses on central banking fiscal policies, emerging market export dynamics, energy grids, and venture capital.',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+    email: 'n.hasan@news10.com',
+    socialLinks: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com' }
+  }
+];
+
+export const initialBreakingNews: BreakingNews[] = [
+  {
+    id: 'bn-1',
+    title: 'Mega Infrastructure: Dhaka Metro Rail Line-6 achieves record 500,000 daily passenger milestone',
+    link: '/news/bangladesh/dhaka-metro-rail-record-passenger-milestone',
+    active: true,
+    priority: 1,
+    createdAt: '2026-09-14T10:00:00Z'
+  },
+  {
+    id: 'bn-2',
+    title: 'Global Climate Summit announces $40B loss and damage replenishment fund in Geneva',
+    link: '/news/international/global-climate-summit-damage-fund-accord',
+    active: true,
+    priority: 2,
+    createdAt: '2026-09-14T11:30:00Z'
+  },
+  {
+    id: 'bn-3',
+    title: 'National Cricket Team secures historic clean-sweep ODI victory in high-octane finish',
+    link: '/news/sports/bangladesh-historic-clean-sweep-cricket-victory',
+    active: true,
+    priority: 3,
+    createdAt: '2026-09-14T12:45:00Z'
+  },
+  {
+    id: 'bn-4',
+    title: 'Central Bank reports headline inflation drops to 6.2% following decisive monetary tightening',
+    link: '/news/business/central-bank-reports-headline-inflation-drop',
+    active: true,
+    priority: 4,
+    createdAt: '2026-09-14T13:10:00Z'
+  }
+];
+
+export const initialAds: AdSlotConfig[] = [
+  {
+    id: 'ad-top',
+    name: 'Top Header Advertisement',
+    location: 'top',
+    enabled: true,
+    scriptCode: '<script src="https://pl27655914.profitableratecpmnetwork.com/a7/bd/d2/a7bdd2ccea73a5f6365b353a44de03ab.js"></script>',
+    htmlContent: '<div class="text-xs text-stone-500 uppercase tracking-widest text-center py-1">Top Advertisement Partner</div>',
+    width: '100%',
+    height: 90
+  },
+  {
+    id: 'ad-banner',
+    name: 'Homepage 468x60 Leaderboard Banner',
+    location: 'banner',
+    enabled: true,
+    scriptCode: `<script>
+  atOptions = {
+    'key' : 'ff3a4833441add20da62f7cb13987d35',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/ff3a4833441add20da62f7cb13987d35/invoke.js"></script>`,
+    width: 468,
+    height: 60
+  },
+  {
+    id: 'ad-sidebar',
+    name: 'Article Sidebar Ad',
+    location: 'sidebar',
+    enabled: true,
+    scriptCode: '<script src="https://pl27655486.profitableratecpmnetwork.com/d3/81/44/d381449bd8eab403acb783e78d782cc5.js"></script>',
+    width: 300,
+    height: 250
+  },
+  {
+    id: 'ad-article',
+    name: 'In-Article Content Ad',
+    location: 'article',
+    enabled: true,
+    scriptCode: '<script src="https://pl27655486.profitableratecpmnetwork.com/d3/81/44/d381449bd8eab403acb783e78d782cc5.js"></script>',
+    width: 468,
+    height: 60
+  },
+  {
+    id: 'ad-footer',
+    name: 'Footer Leaderboard Ad',
+    location: 'footer',
+    enabled: true,
+    scriptCode: '<script src="https://pl27655914.profitableratecpmnetwork.com/a7/bd/d2/a7bdd2ccea73a5f6365b353a44de03ab.js"></script>',
+    width: '100%',
+    height: 90
+  }
+];
+
+export const initialSiteSettings: SiteSettings = {
+  siteName: 'News 10',
+  tagline: 'Your Trusted Source for Breaking News',
+  logoText: 'NEWS 10',
+  contactEmail: 'editor@news10.com',
+  contactPhone: '+880 1700-101010',
+  address: 'News 10 Media Tower, Level 8, 42 Kawran Bazar Commercial Area, Dhaka 1215, Bangladesh',
+  copyrightText: '© 2026 News 10. All Rights Reserved.',
+  socialLinks: {
+    facebook: 'https://facebook.com',
+    twitter: 'https://twitter.com',
+    youtube: 'https://youtube.com',
+    instagram: 'https://instagram.com',
+    telegram: 'https://t.me',
+    whatsapp: 'https://whatsapp.com'
+  }
+};
+
+export const initialArticles: Article[] = [
+  {
+    id: 'art-1',
+    title: 'Dhaka Metro Rail Expands Line-6: Over 500,000 Commuters Daily Transform Urban Transit',
+    slug: 'dhaka-metro-rail-record-passenger-milestone',
+    subtitle: 'Commuters praise reduced congestion and cut in cross-city travel times as new stations open in full capacity.',
+    excerpt: 'The Mass Rapid Transit authority reports staggering public adoption as modern electric trains connect northern suburbs with central commercial hubs in under 38 minutes.',
+    content: `<h2>A Watershed Moment in Metropolitan Mobility</h2>
+<p>In what city planners are describing as the most transformative infrastructure leap of the decade, Dhaka's MRT Line-6 today officially clocked over 500,000 single-day passenger journeys. The milestone comes three months after all intermediate stations became fully operational, drawing daily office-goers, students, and trade workers away from gridlocked arterial boulevards.</p>
+<p>Speaking at a morning press conference, the Managing Director of Dhaka Mass Transit Company Limited highlighted that average end-to-end journey times between Uttara North and Motijheel have dropped from nearly two and a half hours in peak vehicular traffic to just under 38 minutes.</p>
+<blockquote>"The numbers validate our citizens' hunger for dependable, dignified, clean public transit. Every train eliminates hundreds of private cars and autorickshaws from our roads, delivering measurable carbon cuts and productivity gains." — <em>MRT Authority Directorate</em></blockquote>
+<h2>Economic Ripples Across Kawran Bazar and Motijheel</h2>
+<p>Small businesses and retail stalls surrounding transit interchanges report an estimated 25% uptick in foot traffic. Corporate hubs in Motijheel and Dilkusha noted notable improvements in on-time employee attendance rates.</p>
+<ul>
+  <li><strong>Punctuality Rate:</strong> 99.4% on-schedule dispatch across all operational windows.</li>
+  <li><strong>Clean Energy:</strong> Overhead catenary system powered by dedicated green grid reserves.</li>
+  <li><strong>Accessibility:</strong> Full tactile paving, elevators, and designated accessible carriages.</li>
+</ul>
+<h2>Future Line Integrations Under Accelerated Construction</h2>
+<p>Civil engineering teams have already finished foundation piling on the southern extension toward Kamalapur Railway Station. Once completed in early 2027, the central terminal will link nationwide railway passengers directly into the urban metro grid, making inter-district travel seamless.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Modern electric commuter train cruising along the elevated viaduct during evening peak hours.',
+    category: 'Bangladesh',
+    categorySlug: 'bangladesh',
+    authorId: 'author-1',
+    authorName: 'Rahman Kabir',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Senior Political & National Affairs Correspondent',
+    tags: ['Metro Rail', 'Dhaka', 'Urban Transit', 'Infrastructure', 'Bangladesh Economy'],
+    views: 14250,
+    status: 'published',
+    featured: true,
+    breaking: true,
+    categoryFeatured: true,
+    seoTitle: 'Dhaka Metro Rail Reaches 500,000 Daily Passengers Milestone | News 10',
+    seoDescription: 'MRT Line-6 achieves landmark half-million daily ridership, revolutionizing transit across Dhaka with rapid 38-minute cross-town journeys.',
+    seoKeywords: 'dhaka metro rail, mrt line 6, bangladesh infrastructure, urban transport dhaka, news 10',
+    createdAt: '2026-09-14T08:30:00Z',
+    updatedAt: '2026-09-14T09:15:00Z',
+    publishedAt: '2026-09-14T08:30:00Z'
+  },
+  {
+    id: 'art-2',
+    title: 'Global Climate Summit Ratifies Landmark $40B Loss and Damage Replenishment Fund in Geneva',
+    slug: 'global-climate-summit-damage-fund-accord',
+    subtitle: 'Vulnerable coastal nations secure decisive financing mechanism to fortify flood barriers and relocate frontline communities.',
+    excerpt: 'Delegates from 192 nations concluded marathon overnight negotiations to unlock direct grants for climate-vulnerable coastal deltas without predatory debt obligations.',
+    content: `<h2>Historic Breakthrough for Frontline Delta Nations</h2>
+<p>Negotiators cheered and embraced in the main plenary hall of the Palais des Nations early Monday morning as the COP High Presidency gaveled through a comprehensive $40 billion capitalization roadmap for the Loss and Damage Fund.</p>
+<p>The accord establishes direct-access grants rather than sovereign loans, ensuring low-lying delta nations like Bangladesh, island nations in the South Pacific, and sub-Saharan pastoral regions can mobilize emergency funds immediately following extreme tropical cyclones, sea-level surges, and prolonged droughts.</p>
+<blockquote>"This is not charity; it is ecological justice and shared planetary insurance," announced the chief climate negotiator for the Climate Vulnerable Forum. "For millions living along vulnerable coastal embankments, this funding represents the difference between forced displacement and resilient survival."</blockquote>
+<h2>Mechanisms for Rapid Disbursement</h2>
+<p>Under the ratified charter, funds will be released through a streamlined multilateral facility governed equally by contributor and recipient nations. Key stipulations include:</p>
+<ul>
+  <li>Immediate 72-hour emergency payout triggers upon category-4 or category-5 hurricane landfalls.</li>
+  <li>Earmarks for saline-resistant agriculture, cyclone shelters, and mangrove ecosystem restoration.</li>
+  <li>Independent transparency audits with open data portals accessible to civil society observers.</li>
+</ul>`,
+    featuredImage: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Delegates standing to applaud following the historic adoption of the Geneva climate financing framework.',
+    category: 'International',
+    categorySlug: 'international',
+    authorId: 'author-4',
+    authorName: 'Elena Rostova',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'International Bureau Chief',
+    tags: ['Climate Change', 'United Nations', 'Geneva', 'Global Policy', 'Environment'],
+    views: 9840,
+    status: 'published',
+    featured: true,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Global Climate Summit Adopts $40B Loss and Damage Accord in Geneva | News 10',
+    seoDescription: 'International consensus reached as 192 nations agree on $40 billion direct grant fund to aid vulnerable coastal regions facing climate extremes.',
+    seoKeywords: 'climate summit geneva, loss and damage fund, cop climate finance, international news 10',
+    createdAt: '2026-09-14T07:10:00Z',
+    updatedAt: '2026-09-14T08:00:00Z',
+    publishedAt: '2026-09-14T07:10:00Z'
+  },
+  {
+    id: 'art-3',
+    title: 'Historic ODI Clean-Sweep: Bangladesh Stuns Cricket World With Masterful Chase in Mirpur',
+    slug: 'bangladesh-historic-clean-sweep-cricket-victory',
+    subtitle: 'Sensational century under pressure delivers a 3-0 series triumph against visiting heavyweights at the Sher-e-Bangla Stadium.',
+    excerpt: 'An electric crowd of 26,000 roared as the Tigers chased down 286 runs with four balls to spare, marking one of the finest middle-order partnerships in national cricket history.',
+    content: `<h2>Mirpur Roars as Tigers Complete 3-0 Whitewash</h2>
+<p>Under dazzling floodlights at the Sher-e-Bangla National Cricket Stadium, Bangladesh etched another glorious chapter into international cricket folklore. Needing 42 runs off the final four overs, vice-captain Tanzim Sakib paired with senior batsman Towhid Hridoy to orchestrate a breathtaking calculated counter-offensive.</p>
+<p>The visiting pace battery, renowned for reverse swing in the death overs, was systematically dismantled through inventive ramp shots and towering maximums over deep mid-wicket.</p>
+<blockquote>"We believed in each other's temperament. We knew if we batted with clarity and took the game deep into the 50th over, the pressure would shift entirely to the bowling side," remarked player of the match Towhid Hridoy.</blockquote>
+<h2>Match Highlights & Statistical Milestones</h2>
+<ul>
+  <li><strong>Target:</strong> 286 runs in 50 overs.</li>
+  <li><strong>Result:</strong> Bangladesh won by 4 wickets with 4 balls to spare.</li>
+  <li><strong>Milestone:</strong> Third consecutive bilateral series whitewash on home soil this calendar year.</li>
+  <li><strong>Player of the Series:</strong> Mehidy Hasan Miraz for 11 wickets and 148 aggregate runs.</li>
+</ul>`,
+    featuredImage: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'The national team celebrates the winning boundary amidst fireworks at Sher-e-Bangla Stadium.',
+    category: 'Sports',
+    categorySlug: 'sports',
+    authorId: 'author-3',
+    authorName: 'Sadikur Rahman',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Lead Sports Journalist & Analyst',
+    tags: ['Cricket', 'Bangladesh Cricket', 'Tigers', 'Mirpur', 'ICC ODI'],
+    views: 28410,
+    status: 'published',
+    featured: false,
+    breaking: true,
+    categoryFeatured: true,
+    seoTitle: 'Bangladesh Tigers Complete 3-0 Cricket Series Clean Sweep in Mirpur | News 10',
+    seoDescription: 'Unforgettable night in Mirpur as Bangladesh chases 286 with four balls remaining to secure historic bilateral cricket whitewash.',
+    seoKeywords: 'bangladesh cricket, mirpur tigers, cricket odi whitewash, sports news 10',
+    createdAt: '2026-09-14T11:00:00Z',
+    updatedAt: '2026-09-14T11:45:00Z',
+    publishedAt: '2026-09-14T11:00:00Z'
+  },
+  {
+    id: 'art-4',
+    title: 'Central Bank Confirms Inflation Cools to 6.2% as Food Supply Chains Stabilize Nationwide',
+    slug: 'central-bank-reports-headline-inflation-drop',
+    subtitle: 'Prudent policy rate adjustments and targeted open-market rice sales yield sustained consumer price relief.',
+    excerpt: 'The national statistical bureau documented cooling consumer indices for the fourth consecutive month, providing welcome relief for household grocery budgets.',
+    content: `<h2>Monetary Discipline Delivers Tangible Relief</h2>
+<p>In a comprehensive quarterly macroeconomic review released this afternoon, the Governor of Bangladesh Bank officially confirmed that headline Consumer Price Index (CPI) inflation receded to 6.2% in August, down sharply from 9.8% late last year.</p>
+<p>The improvement was driven primarily by a robust Aman harvest, zero-tariff import windows on edible oils and lentils, and effective digitised monitoring across district agricultural wholesale hubs.</p>
+<h2>Market Analysts Weigh In</h2>
+<p>Leading economists at the Policy Research Institute highlighted that keeping interest rates competitive while strictly curbing unbacked currency emissions has successfully curbed speculative hoarding.</p>
+<blockquote>"The stabilization in food staples provides crucial breathing room for wage earners. Our focus must now remain on preserving foreign exchange reserves and bolstering export competitiveness."</blockquote>`,
+    featuredImage: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Trading floor activity and currency desk monitoring at the central monetary authority headquarters.',
+    category: 'Business',
+    categorySlug: 'business',
+    authorId: 'author-5',
+    authorName: 'Nayeem Hasan',
+    authorAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Markets & Macroeconomics Editor',
+    tags: ['Economy', 'Inflation', 'Central Bank', 'Finance', 'Food Prices'],
+    views: 7320,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Headline Inflation Drops to 6.2% in Bangladesh - Central Bank | News 10',
+    seoDescription: 'Bangladesh Bank report details steady drop in consumer price index driven by stabilized food distribution and monetary policy controls.',
+    seoKeywords: 'bangladesh inflation, central bank economics, business news 10, gdp growth',
+    createdAt: '2026-09-14T09:30:00Z',
+    updatedAt: '2026-09-14T10:00:00Z',
+    publishedAt: '2026-09-14T09:30:00Z'
+  },
+  {
+    id: 'art-5',
+    title: 'Next-Generation Generative AI Standard Unveiled: Safety Guidelines Mandate Watermarking',
+    slug: 'next-gen-ai-safety-standards-watermarking-mandate',
+    subtitle: 'International technology consortium enforces cryptographic origin signatures to combat deceptive synthetic media.',
+    excerpt: 'Major technology companies and standards bodies agree on mandatory verifiable metadata protocols for all machine-generated imagery, voice, and video.',
+    content: `<h2>A Technical Safeguard Against Synthetic Disinformation</h2>
+<p>A global coalition comprising leading artificial intelligence laboratories, search engines, and media organizations today ratified the C2PA v3.0 technical specification. The standard requires all enterprise generative media models to embed tamper-evident cryptographic provenance signatures at generation time.</p>
+<p>Under the new protocol, browser extensions, mobile news applications, and social platforms will automatically surface an immutable "Information Credential" pill, displaying which algorithm generated the image or audio, whether human editorial retouching occurred, and the timestamp of creation.</p>
+<blockquote>"Without verifiable cryptographic authenticity, the public's trust in digital news media faces structural erosion. This framework restores baseline transparency for citizen journalism and institutional reporting alike," stated consortium chairs.</blockquote>`,
+    featuredImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Digital security representation of cryptographic metadata verification across media streams.',
+    category: 'Technology',
+    categorySlug: 'technology',
+    authorId: 'author-2',
+    authorName: 'Tania Mahbub',
+    authorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Chief Technology & Digital Economy Editor',
+    tags: ['AI Safety', 'Generative AI', 'Cybersecurity', 'Tech Standards', 'Ethics'],
+    views: 11200,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Global AI Safety Standards Enforce Cryptographic Media Watermarking | News 10',
+    seoDescription: 'New C2PA v3.0 standard mandates immutable origin signatures on generative AI photos, videos, and synthesized speech.',
+    seoKeywords: 'ai safety standards, generative ai watermark, technology news 10, tech policy',
+    createdAt: '2026-09-14T06:45:00Z',
+    updatedAt: '2026-09-14T07:30:00Z',
+    publishedAt: '2026-09-14T06:45:00Z'
+  },
+  {
+    id: 'art-6',
+    title: 'Electoral Reform Commission Releases Digital Roadmap for Voter Verification',
+    slug: 'electoral-reform-commission-digital-roadmap',
+    subtitle: 'Transparent biometrics, open-source tally verification, and diaspora voting pilots featured in national white paper.',
+    excerpt: 'The high-level commission presented a 120-page strategic framework aimed at bolstering trust and public participation in upcoming general elections.',
+    content: `<h2>Enhancing Civic Trust Through Verifiable Architecture</h2>
+<p>In a landmark public session attended by legal scholars, political party representatives, and civil rights advocates, the Electoral Reform Commission unveiled its long-anticipated modernization roadmap.</p>
+<p>The commission's recommendations emphasize three key pillars: decentralized auditable voter logs, live transmission of constituency-level tallies over secured networks, and expedited mail-in biometric authentication for millions of expatriate citizens contributing remittances abroad.</p>
+<p>All software repositories powering digital voter verification will undergo continuous independent third-party white-hat penetration testing and be published under transparent open-audit licenses.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Members of the national electoral panel presiding over parliamentary committee deliberations.',
+    category: 'Politics',
+    categorySlug: 'politics',
+    authorId: 'author-1',
+    authorName: 'Rahman Kabir',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Senior Political & National Affairs Correspondent',
+    tags: ['Elections', 'Politics', 'Parliament', 'Democracy', 'Reforms'],
+    views: 8650,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Electoral Reform Commission Unveils Digital Roadmap | News 10',
+    seoDescription: 'High-level commission proposes open-source voter verification, expatriate ballot access, and rigorous security protocols.',
+    seoKeywords: 'electoral reform bangladesh, politics news 10, voter verification roadmap',
+    createdAt: '2026-09-14T05:20:00Z',
+    updatedAt: '2026-09-14T06:10:00Z',
+    publishedAt: '2026-09-14T05:20:00Z'
+  },
+  {
+    id: 'art-7',
+    title: 'Dhaka International Film Festival Honors Independent Cinema With Prestigious Golden Royal Bengal Awards',
+    slug: 'dhaka-film-festival-honors-independent-cinema',
+    subtitle: 'Over 220 films from 70 nations screened to packed auditoriums across the capital during nine-day celebration.',
+    excerpt: 'Artistic directors celebrated bold storytelling, innovative regional cinematography, and rising woman filmmakers at the star-studded closing gala.',
+    content: `<h2>Celebrating the Power of the Moving Image</h2>
+<p>The National Museum Auditorium was filled to capacity on Sunday evening as the 24th edition of the Dhaka International Film Festival concluded with an emotional awards ceremony. Juries praised the extraordinary technical craft and sensitive socio-cultural themes explored across Asian and international competition categories.</p>
+<p>The Grand Jury Prize was awarded to director Ananya Sen for her lyrical drama exploring rural artisan communities resisting industrial land encroachment in the Bengal delta. Audiences gave a ten-minute standing ovation to the film's ensemble cast.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'The glowing marquee and red carpet reception at the National Museum Auditorium in Dhaka.',
+    category: 'Entertainment',
+    categorySlug: 'entertainment',
+    authorId: 'author-2',
+    authorName: 'Tania Mahbub',
+    authorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Chief Technology & Digital Economy Editor',
+    tags: ['Cinema', 'Dhaka Film Festival', 'Culture', 'Arts', 'Entertainment'],
+    views: 6190,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Dhaka International Film Festival Concludes With Golden Royal Bengal Honors | News 10',
+    seoDescription: 'Independent film triumphs in Dhaka as 24th international festival celebrates cinematic excellence across 70 countries.',
+    seoKeywords: 'dhaka film festival, entertainment news 10, cinema arts bangladesh',
+    createdAt: '2026-09-14T04:15:00Z',
+    updatedAt: '2026-09-14T05:00:00Z',
+    publishedAt: '2026-09-14T04:15:00Z'
+  },
+  {
+    id: 'art-8',
+    title: 'The Urban Green Rooftop Movement: How Dhaka Residents Are Cooling Concrete Neighborhoods',
+    slug: 'urban-rooftop-gardening-cooling-dhaka-neighborhoods',
+    subtitle: 'Hydroponics, heirloom varieties, and biological shade canopies reduce apartment cooling bills by up to 30%.',
+    excerpt: 'From Dhanmondi to Uttara, citizens are transforming bare residential concrete slabs into lush micro-farms that combat urban heat island spikes.',
+    content: `<h2>From Bare Concrete to Verdant Oases</h2>
+<p>Amidst soaring summer temperatures, a silent ecological revolution is blooming across the skylines of Dhaka. Over 18,000 residential buildings have established registered rooftop horticultural ecosystems, growing everything from nutrient-dense leafy greens and fresh pomegranates to fragrant jasmine and medicinal herbs.</p>
+<p>Architectural thermal imaging surveys conducted by BUET researchers show that buildings with fully planted vegetative roof covers register interior top-floor temperatures up to 4.2°C cooler than adjacent unshaded concrete structures, significantly trimming electrical air conditioning demands.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Lush rooftop garden with organic vegetables and solar shade canopies in Dhanmondi, Dhaka.',
+    category: 'Lifestyle',
+    categorySlug: 'lifestyle',
+    authorId: 'author-4',
+    authorName: 'Elena Rostova',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'International Bureau Chief',
+    tags: ['Urban Gardening', 'Sustainability', 'Green Living', 'Dhaka', 'Lifestyle'],
+    views: 5410,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: true,
+    seoTitle: 'Urban Green Rooftop Movement Cools Dhaka Neighborhoods | News 10',
+    seoDescription: 'Dhaka residents embrace rooftop micro-gardening to combat urban heat, produce organic herbs, and lower household cooling costs.',
+    seoKeywords: 'rooftop gardening dhaka, urban heat island, sustainable lifestyle news 10',
+    createdAt: '2026-09-14T03:30:00Z',
+    updatedAt: '2026-09-14T04:00:00Z',
+    publishedAt: '2026-09-14T03:30:00Z'
+  },
+  {
+    id: 'art-9',
+    title: 'Sundarbans Mangrove Conservation Project Deploys Acoustic AI Sensors to Protect Royal Bengal Tigers',
+    slug: 'sundarbans-acoustic-ai-sensors-tiger-conservation',
+    subtitle: 'Solar-powered bio-acoustic listening posts help forest rangers prevent illegal poaching and track endangered biodiversity in real-time.',
+    excerpt: 'A groundbreaking partnership between wildlife biologists and AI researchers introduces solar canopy microphones that identify chainsaw vibrations and distress calls.',
+    content: `<h2>Cutting-Edge Technology in the World’s Largest Mangrove Forest</h2>
+<p>Forest rangers in the southern coastal sanctuary of the Sundarbans now have an invisible digital shield guarding the UNESCO World Heritage site. Dispersed across 40 square kilometers of tidal riverways, 85 ruggedized solar acoustic sensors continuously monitor ambient jungle sounds.</p>
+<p>Machine learning models running on localized micro-processors analyze sound waves in real-time. If the sonic signature of an outboard engine, unauthorized gunshot, or mechanical saw is detected, automated GPS alerts are beamed via satellite link to ranger patrol boats stationed nearby.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Royal Bengal Tiger walking silently along the muddy tidal banks of the Sundarbans.',
+    category: 'Bangladesh',
+    categorySlug: 'bangladesh',
+    authorId: 'author-1',
+    authorName: 'Rahman Kabir',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Senior Political & National Affairs Correspondent',
+    tags: ['Sundarbans', 'Wildlife', 'Tiger Conservation', 'AI Sensors', 'Environment'],
+    views: 8930,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: false,
+    seoTitle: 'Sundarbans Deploys Acoustic AI to Protect Bengal Tigers | News 10',
+    seoDescription: 'Solar-powered listening network detects unauthorized vessels and poachers in real-time across Sundarbans mangrove reserve.',
+    seoKeywords: 'sundarbans tiger conservation, bio acoustic ai, bangladesh wildlife news 10',
+    createdAt: '2026-09-13T20:00:00Z',
+    updatedAt: '2026-09-14T01:00:00Z',
+    publishedAt: '2026-09-13T20:00:00Z'
+  },
+  {
+    id: 'art-10',
+    title: 'ASEAN and South Asian Economies Establish Fast-Track Renewable Energy Trade Corridor',
+    slug: 'asean-south-asia-renewable-energy-trade-corridor',
+    subtitle: 'Cross-border high-voltage direct current (HVDC) transmission lines will allow hydro, solar, and offshore wind power sharing.',
+    excerpt: 'Regional energy ministers signed a historic memorandum in Singapore, laying the foundation for a synchronized green electrical grid spanning six nations.',
+    content: `<h2>Interconnecting Regional Power Grids for Net-Zero Transition</h2>
+<p>Energy ministers from Bangladesh, India, Nepal, Bhutan, Thailand, and Malaysia concluded a historic two-day summit in Singapore with the signing of the Bay of Bengal Green Energy Grid Treaty. The accord establishes technical standards and tariff frameworks for cross-border power exchanges.</p>
+<p>The network will allow Himalayan hydroelectric power during summer monsoon melt to supply industrial clusters in coastal manufacturing zones, while coastal solar and offshore wind farms export surplus generation during peak winter daylight hours.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Transmission towers and renewable solar collectors meeting in a regional energy exchange park.',
+    category: 'International',
+    categorySlug: 'international',
+    authorId: 'author-4',
+    authorName: 'Elena Rostova',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'International Bureau Chief',
+    tags: ['Renewable Energy', 'Trade Corridor', 'Green Grid', 'International Affairs', 'Solar'],
+    views: 4720,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: false,
+    seoTitle: 'Regional Renewable Energy Trade Corridor Ratified | News 10',
+    seoDescription: 'Six South and Southeast Asian nations sign historic pact to link regional electrical grids for seamless green power distribution.',
+    seoKeywords: 'green energy corridor, asean south asia grid, international energy news 10',
+    createdAt: '2026-09-13T18:00:00Z',
+    updatedAt: '2026-09-13T19:00:00Z',
+    publishedAt: '2026-09-13T18:00:00Z'
+  },
+  {
+    id: 'art-11',
+    title: 'Ready-Made Garment Sector Records Record Green Factory Certifications in Q3',
+    slug: 'rmg-sector-record-leed-green-factory-certifications',
+    subtitle: 'Bangladesh maintains global leadership with 225 LEED Platinum and Gold certified sustainable manufacturing units.',
+    excerpt: 'International apparel buyers praise ethical manufacturing standards as energy-efficient textile mills set global benchmarks in water recycling and solar power.',
+    content: `<h2>Global Leadership in Sustainable Apparel Manufacturing</h2>
+<p>The Bangladesh Garment Manufacturers and Exporters Association (BGMEA) announced today that seven additional manufacturing complexes have been awarded the prestigious USGBC LEED Platinum certification, bringing the nation’s total to 225 world-class green apparel facilities.</p>
+<p>These certified factories employ zero-liquid-discharge water recycling systems, rooftop photovoltaic arrays that offset up to 40% of daytime electrical loads, and daylight harvesting architecture that promotes worker well-being.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Engineers inspecting state-of-the-art automated, energy-efficient textile manufacturing equipment.',
+    category: 'Business',
+    categorySlug: 'business',
+    authorId: 'author-5',
+    authorName: 'Nayeem Hasan',
+    authorAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Markets & Macroeconomics Editor',
+    tags: ['RMG', 'Exports', 'Green Factory', 'LEED', 'Bangladesh Economy'],
+    views: 6580,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: false,
+    seoTitle: 'Bangladesh RMG Sector Sets Global LEED Green Factory Record | News 10',
+    seoDescription: 'Bangladesh leads the world with 225 LEED certified sustainable garment manufacturing complexes as global brands prioritize green supply chains.',
+    seoKeywords: 'bangladesh rmg green factories, leed platinum apparel, business news 10',
+    createdAt: '2026-09-13T15:00:00Z',
+    updatedAt: '2026-09-13T16:00:00Z',
+    publishedAt: '2026-09-13T15:00:00Z'
+  },
+  {
+    id: 'art-12',
+    title: 'Quantum Key Distribution Testbed Successfully Links National Research Data Centers',
+    slug: 'quantum-key-distribution-testbed-successful-link',
+    subtitle: 'Unconditionally secure optical fiber cryptographic network protects critical financial and scientific communications.',
+    excerpt: 'Scientists at the National Institute of Science and Technology demonstrate the nation’s first entanglement-based quantum communication link over 65km of dark fiber.',
+    content: `<h2>Unbreakable Security for the Quantum Era</h2>
+<p>In a major milestone for national cryptographic independence, computer scientists and quantum physicists successfully transmitted entanglement-verified quantum cryptographic keys between Dhaka and Gazipur high-performance computing centers.</p>
+<p>The network relies on single-photon emitters and detectors. Any attempt at wiretapping or interception by an external adversary causes the quantum state of the photons to collapse, immediately alerting administrators and invalidating the compromised key stream.</p>`,
+    featuredImage: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
+    imageCaption: 'Laser optical test bench configured for quantum photon polarization and entanglement testing.',
+    category: 'Technology',
+    categorySlug: 'technology',
+    authorId: 'author-2',
+    authorName: 'Tania Mahbub',
+    authorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+    authorTitle: 'Chief Technology & Digital Economy Editor',
+    tags: ['Quantum Computing', 'Cybersecurity', 'Cryptography', 'Science', 'Innovation'],
+    views: 7890,
+    status: 'published',
+    featured: false,
+    breaking: false,
+    categoryFeatured: false,
+    seoTitle: 'Quantum Key Cryptography Testbed Links National Data Centers | News 10',
+    seoDescription: 'Breakthrough quantum communication demonstration achieves unconditionally secure data transmission across 65 kilometers of fiber optic cable.',
+    seoKeywords: 'quantum key distribution, cybersecurity tech news 10, quantum computing bangladesh',
+    createdAt: '2026-09-13T12:00:00Z',
+    updatedAt: '2026-09-13T13:00:00Z',
+    publishedAt: '2026-09-13T12:00:00Z'
+  }
+];
